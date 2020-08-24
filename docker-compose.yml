@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+  server:
+    image: net.savantly/postgres-loader
+    container_name: postgres-loader
+    build:
+      context: ./src
+      dockerfile: ./Dockerfile
+    environment: 
+      - PGHOST=${PGHOST:-localhost}
+      - PGPORT=${PGPORT:-5432}
+      - PGDATABASE=${PGDATABASE}
+      - PGUSER=${PGUSER:-postgres}
+      - PGPASSWORD=${PGPASSWORD}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_BUCKET_NAME=${S3_BUCKET_NAME}
+    volumes:
+      - ./test/crontab:/crontab
+      - ./test:/test
+    privileged: true

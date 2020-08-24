@@ -1,0 +1,17 @@
+LOAD DBF
+FROM /var/www/s3/gndxfer/100028/20200806/GNDITEM.dbf
+INTO postgresql://{{PGHOST}}:{{PGPORT}}/{{PGDATABASE}}
+TARGET TABLE "TEST"."GNDITEM"
+WITH no truncate;
+
+LOAD DBF
+FROM /var/www/s3/gndxfer/100028/20200806/GNDLINE.dbf
+INTO postgresql://{{PGHOST}}:{{PGPORT}}/{{PGDATABASE}}
+TARGET TABLE "TEST"."GNDLINE"
+WITH no truncate;
+
+LOAD DBF
+FROM /var/www/s3/gndxfer/100028/20200806/GNDSALE.dbf
+INTO postgresql://{{PGHOST}}:{{PGPORT}}/{{PGDATABASE}}
+TARGET TABLE "TEST"."GNDSALE"
+WITH no truncate;

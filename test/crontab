@@ -1,0 +1,6 @@
+PATH=/test:/usr/local/bin:$PATH
+SHELL=/bin/bash
+BASH_ENV=/root/project_env.sh
+* * * * * echo "my cronjob" > /proc/1/fd/1 2>&1
+* * * * * /test/script.sh >> /test_file 2>&1
+# remember to end this file with an empty new line
